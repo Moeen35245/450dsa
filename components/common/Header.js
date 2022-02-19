@@ -10,7 +10,7 @@ function Header() {
             DSA TRACKER
           </h1>
         </div>
-        <div className="text-slate-700 text-lg font-semibold ml-4">
+        <div className="text-slate-700 text-lg font-semibold md:ml-4">
           <p>
             Enhance your data structures and algorithems skill by solving
             <span className="hover:italic hover:underline text-darkRed">
