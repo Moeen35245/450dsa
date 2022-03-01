@@ -23,7 +23,7 @@ export default function Home(props) {
         <title>450 DSA TRACKER</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
-          name="description"
+          name="description.."
           content="450 dsa tracker based on Love babbar 450 dsa sde sheet"
         />
         <meta name="description" content="Love babbar sde sheet" />
