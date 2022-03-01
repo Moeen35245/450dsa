@@ -50,7 +50,7 @@ export default function Home(props) {
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
-  console.log(process.env.USER_ID);
+
   const client = await connectToDatabase();
   const db = client.db();
   const questionCollection = db.collection("questionList");
@@ -62,7 +62,6 @@ export async function getServerSideProps(context) {
   if (session) {
     let res = await userCollection.findOne({ email: session.user.email });
     res = {
-      id: res._id.toString(),
       queList: res.questionList,
     };
     questionData = res;
