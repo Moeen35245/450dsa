@@ -6,27 +6,17 @@ import laptop from "../../public/laptop.svg";
 import { InputContext, UserContext } from "../../context/mainContext";
 import userCredentials from "../../lib/credentials";
 import MessageBox from "../form/MessageBox";
-
-// const getUserdataHandler = async (email) => {
-//   const response = await fetch("/api/getUserData", {
-//     method: "PATCH",
-//     body: JSON.stringify({ email }),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   });
-//   const data = await response.json();
-
-//   return data;
-// };
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
 
 function Form() {
+  const { status } = useSession();
+  const [loading, setLoading] = useState("");
   const ctx = useContext(InputContext);
   const ctxUser = useContext(UserContext);
   const router = useRouter();
   const emailRef = useRef();
   const passwordRef = useRef();
-  console.log(ctxUser.loading);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -42,7 +32,7 @@ function Form() {
 
   return (
     <div className="mt-28 bg-white w-full h-full rounded flex">
-      <h1>{ctxUser.loading === "loading"}</h1>
+      {loading == "" && <h1>loading...</h1>}
       <div className="grow w-1/2 form-container flex justify-center items-center">
         <form
           onSubmit={submitHandler}
