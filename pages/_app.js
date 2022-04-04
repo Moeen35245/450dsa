@@ -3,7 +3,7 @@ import "../styles/main.css";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import Navbar from "../components/common/Navbar";
-import { SessionProvider, session } from "next-auth/react";
+import { SessionProvider } from "next-auth/react";
 import UserState from "../context/userState";
 const progress = new ProgressBar({
   size: 4,
@@ -18,7 +18,7 @@ Router.events.on("routeChangeError", progress.finish);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider session={pageProps.session}>
       <UserState>
         <Navbar />
         <Component {...pageProps} />
