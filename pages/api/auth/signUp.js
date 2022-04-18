@@ -16,7 +16,7 @@ const handler = async (req, res) => {
       password.trim().length < 7
     ) {
       // throw new Error("Email or Password look strange");
-      res.status(422).json({ message: "Email or Password Look bad" });
+      res.status(422).json({ message: "Email or Password Looks bad" });
       client.close();
     }
     const existingUser = await db.collection("users").findOne({ email: email });
@@ -47,7 +47,7 @@ const handler = async (req, res) => {
         Graph: [],
         Trie: [],
         DynamicProgramming: [],
-        BitManuplation: [],
+        BitManipulation: [],
       },
     });
     client.close();

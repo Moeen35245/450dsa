@@ -53,7 +53,7 @@ function Card({ name, id, number }) {
             <p className="font-medium text-sm">
               {length}/{number}
             </p>
-            {(!ctx.session && <ClosedIcon />) || (ctx.session && <OpenIocn />)}
+            {(!session && <ClosedIcon />) || (session && <OpenIocn />)}
             <div className="ml-auto"></div>
             {length > 0 ? <StatusHome /> : <Status />}
           </div>

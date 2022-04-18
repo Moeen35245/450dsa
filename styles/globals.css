@@ -12,9 +12,9 @@
 
 .loading {
   display: inline-block;
-  width: 25px;
-  height: 25px;
-  border: 2px solid rgb(26 108 97 / 56%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid #6e4ab59b;
   border-radius: 50%;
   border-top-color: #fff;
   animation: spin 0.5s linear infinite;

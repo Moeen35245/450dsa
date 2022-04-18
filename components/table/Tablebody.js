@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { UploadIcon } from "@heroicons/react/outline";
 import { useSession } from "next-auth/react";
 import Status from "../common/Status";
 import StatusGreen from "../common/StatusGreen";
-import { useContext } from "react";
-import { UserContext } from "../../context/mainContext";
 import { removeSpaces } from "../../lib/removespace";
 
 const insertHandler = async (id, email, topic) => {
@@ -29,14 +27,16 @@ const deleteHandler = async (id, email, topic) => {
     },
   });
   const data = await response.json();
-  console.log(data);
+
   return data;
 };
 
 function Tablebody({ item, count, queList }) {
   const { data: session, status } = useSession();
-  const ctx = useContext(UserContext);
+
+  const [isLoading, setLoading] = useState(false);
   const [userData, setUserData] = useState(queList);
+
   if (!userData) {
     setUserData(queList);
   }
@@ -45,13 +45,17 @@ function Tablebody({ item, count, queList }) {
   const [isQueDone, setIsQueDone] = useState(userData[topic].includes(item.id));
 
   const checkHandler = async (e) => {
+    setLoading(true);
     if (!isQueDone) {
-      const res = await insertHandler(item.id, session.user.email, topic);
-      setUserData(res.questionList);
+      insertHandler(item.id, session.user.email, topic)
+        .then((res) => setUserData(res.questionList))
+        .then((res) => setLoading(false));
       setIsQueDone(true);
     } else {
-      const res = await deleteHandler(item.id, session.user.email, topic);
-      setUserData(res.questionList);
+      deleteHandler(item.id, session.user.email, topic)
+        .then((res) => setUserData(res.questionList))
+        .then((res) => setLoading(false));
+
       setIsQueDone(false);
     }
   };
@@ -60,12 +64,16 @@ function Tablebody({ item, count, queList }) {
     <tbody className="mb-2 md:w-max w-[150px]">
       <tr>
         <td className="center-col">
-          <input
-            type="checkbox"
-            className="cursor-pointer"
-            checked={isQueDone && "checked"}
-            onChange={checkHandler}
-          />
+          {isLoading ? (
+            <span className="loading"></span>
+          ) : (
+            <input
+              type="checkbox"
+              className="cursor-pointer"
+              checked={isQueDone && "checked"}
+              onChange={checkHandler}
+            />
+          )}
         </td>
         <td className="center-col">{++count}</td>
         <td className="md:p-5 max-w-xs md:max-w-full">
