@@ -2,18 +2,22 @@ import { Fragment, useContext, useState } from "react";
 import { UsersIcon } from "@heroicons/react/solid";
 import "../../styles/Home.module.css";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import Status from "./Status";
 import { UserContext } from "../../context/mainContext";
 import { ClosedIcon, OpenIocn } from "../card/Icons";
 import { removeSpaces } from "../../lib/removespace";
 import StatusHome from "./StatusHome";
 function Card({ name, id, number }) {
+  const { data: session, status } = useSession();
   const ctx = useContext(UserContext);
   const topic = removeSpaces(name);
   let length = 0;
-  if (ctx.session) {
+  if (session) {
     if (ctx.userData)
       if (ctx.userData[topic]) length = ctx.userData[topic].length;
+  } else {
+    // console.log("session is not defined yet");
   }
 
   const Childdiv = {

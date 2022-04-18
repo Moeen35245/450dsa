@@ -9,7 +9,7 @@ import { MenuAlt4Icon } from "@heroicons/react/outline";
 function Navbar() {
   const ctx = useContext(UserContext);
   const { data: session, status } = useSession();
-  ctx.setSession(session);
+  // ctx.setSession(session);
   // ctx.setLoading(status);
   // console.log(session, status);
   const [isOpen, setIsOpen] = useState(false);

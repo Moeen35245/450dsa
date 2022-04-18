@@ -4,11 +4,10 @@ import { verifypassword } from "../../../lib/bcrypt";
 import { connectToDatabase } from "../../../lib/db";
 
 export default NextAuth({
-  callbacks: {
-    session: {
-      jwt: true,
-    },
+  session: {
+    jwt: true,
   },
+
   providers: [
     CredentialsProvider({
       async authorize(credentials) {

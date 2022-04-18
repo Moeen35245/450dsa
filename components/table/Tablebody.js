@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { UploadIcon } from "@heroicons/react/outline";
+import { useSession } from "next-auth/react";
 import Status from "../common/Status";
 import StatusGreen from "../common/StatusGreen";
 import { useContext } from "react";
@@ -33,6 +34,7 @@ const deleteHandler = async (id, email, topic) => {
 };
 
 function Tablebody({ item, count, queList }) {
+  const { data: session, status } = useSession();
   const ctx = useContext(UserContext);
   const [userData, setUserData] = useState(queList);
   if (!userData) {
@@ -44,11 +46,11 @@ function Tablebody({ item, count, queList }) {
 
   const checkHandler = async (e) => {
     if (!isQueDone) {
-      const res = await insertHandler(item.id, ctx.session.user.email, topic);
+      const res = await insertHandler(item.id, session.user.email, topic);
       setUserData(res.questionList);
       setIsQueDone(true);
     } else {
-      const res = await deleteHandler(item.id, ctx.session.user.email, topic);
+      const res = await deleteHandler(item.id, session.user.email, topic);
       setUserData(res.questionList);
       setIsQueDone(false);
     }

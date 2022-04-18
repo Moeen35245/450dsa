@@ -11,7 +11,7 @@ import { useSession } from "next-auth/react";
 
 function Form() {
   const { status } = useSession();
-  const [loading, setLoading] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const ctx = useContext(InputContext);
   const ctxUser = useContext(UserContext);
   const router = useRouter();
@@ -20,19 +20,16 @@ function Form() {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const enteredEmail = emailRef.current.value;
     const enteredPassword = passwordRef.current.value;
-    const result = await userCredentials(
-      enteredEmail,
-      enteredPassword,
-      ctx,
-      router
+    userCredentials(enteredEmail, enteredPassword, ctx, router).then((res) =>
+      setLoading(false)
     );
   };
 
   return (
     <div className="mt-28 bg-white w-full h-full rounded flex">
-      {loading == "" && <h1>loading...</h1>}
       <div className="grow w-1/2 form-container flex justify-center items-center">
         <form
           onSubmit={submitHandler}
@@ -90,7 +87,13 @@ function Form() {
             className="w-full py-2 bg-darkBlue shadow-darkBlue text-white rounded"
             type="submit"
           >
-            {ctx.isLogin ? "Login" : "SignUp"}
+            {isLoading ? (
+              <span className="loading"></span>
+            ) : ctx.isLogin ? (
+              "Login"
+            ) : (
+              "SignUp"
+            )}
           </button>
           <br />
           <div className="flex">

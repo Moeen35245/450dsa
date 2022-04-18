@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 
 export default async function checkedQueHandler(req, res) {
   if (req.method === "PATCH") {
-    const session = getSession();
+    const session = getSession({ req });
     if (!session) {
       res.status(403).json({ message: "you are not logged in" });
     }
