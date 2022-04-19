@@ -20,13 +20,27 @@ export default function Home(props) {
   return (
     <div className="bg-background h-[100%] pt-16 w-screen">
       <Head>
-        <title>450 DSA TRACKER</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <title>450 DSA TRACKER - love babbar - 450 dsa sde sheet</title>
         <meta
-          name="description.."
-          content="450 dsa tracker based on Love babbar 450 dsa sde sheet"
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        ></meta>
+        <meta
+          name="keywords"
+          content="450 dsa tracker, sde sheet, love babbar sde sheet"
         />
-        <meta name="description" content="Love babbar sde sheet" />
+        <meta property="og:title" content="450 DSA TRACKER" />
+        <meta
+          property="og:description"
+          content="450 dsa tracker will enhance your data structures and algorithems skill and it will drive away your fear. Dsa 450 is a collection of 400+ most asked dsa questions"
+        />
+        <meta property="og:type" content="webapp" />
+        <meta property="og:url" content="https://www.450dsa.vercel.app" />
+        <meta
+          property="og:image"
+          content="https://drive.google.com/file/d/1OuJWyb47Gby7x8L8Cv15vOuVWPgqhwqN/view?usp=sharing"
+        />
+        <meta charSet="utf-8"></meta>
         <link rel="icon" href="/logo.svg" />
       </Head>
       <Header />
