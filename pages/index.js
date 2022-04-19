@@ -26,6 +26,10 @@ export default function Home(props) {
           content="width=device-width, initial-scale=1"
         ></meta>
         <meta
+          name="description"
+          content="450 dsa tracker will enhance your data structures and algorithems skill and it will drive away your fear. Dsa 450 is a collection of 400+ most asked dsa questions"
+        />
+        <meta
           name="keywords"
           content="450 dsa tracker, sde sheet, love babbar sde sheet"
         />
