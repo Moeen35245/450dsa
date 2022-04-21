@@ -33,6 +33,10 @@ export default function Home(props) {
           name="keywords"
           content="450 dsa tracker, sde sheet, love babbar sde sheet"
         />
+        <meta
+          name="google-site-verification"
+          content="jHIa92FrxJtH7lhBfhYIzQcCV1b-JF3XVNrE7JJJYTg"
+        />
         <meta property="og:title" content="450 DSA TRACKER" />
         <meta
           property="og:description"
