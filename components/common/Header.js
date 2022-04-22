@@ -15,7 +15,7 @@ function Header() {
             Enhance your data structures and algorithems skill by solving
             <span className="hover:italic hover:underline text-darkRed">
               <a
-                href="https://www.youtube.com/c/codehelpbybabbar"
+                href="https://www.geeksforgeeks.org/dsa-sheet-by-love-babbar/"
                 rel="noreferrer"
                 target="_blank"
                 className="transition-all"
