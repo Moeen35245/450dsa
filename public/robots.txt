@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://450dsa.vercel.app/site-map
+Sitemap: https://450dsa.vercel.app/api/site-map
