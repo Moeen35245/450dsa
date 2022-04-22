@@ -8,9 +8,9 @@ import { UserContext } from "../context/mainContext";
 const String = ({ data, queData }) => {
   return (
     <div className=" bg-[#f1faee] pt-10">
-      <h1 className="md:mt-12 text-center mx-auto text-5xl font-semibold text-[#6D4AB5]">
+      <h2 className="md:mt-12 text-center mx-auto text-5xl font-semibold text-[#6D4AB5]">
         {data[0].topic}
-      </h1>
+      </h2>
       <main className=" p-4 overflow-x-auto">
         <div className="bg-white rounded-xl w-max mx-auto p-4 ">
           <div className="hidden p-3 border-2  items-center rounded-md">

@@ -33,9 +33,9 @@ function Card({ name, id, number }) {
           <div className="bg-darkBlue logo-container w-16 h-12 rounded-[10px] z-50 -mt-6 flex justify-center items-center">
             <UsersIcon className="h-6 w-6 text-white" />
           </div>
-          <h1 className="text-center mt-2 text-3xl font-semibold text-darkBlue">
+          <h2 className="text-center mt-2 text-3xl font-semibold text-darkBlue">
             {name}
-          </h1>
+          </h2>
           <p className="font-medium text-sm">{number} Questions</p>
           <div className="mt-auto flex justify-between w-[94%] mb-1 font-medium text-sm">
             <p>Progress</p>

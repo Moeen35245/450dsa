@@ -5,10 +5,13 @@ function Header() {
     <div className="mt-8 px-12 md:rounded-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-4 mb-12 bg-indigo-100 max-w-[1160px]">
       <div className="md:pt-0 pt-20 right-half flex justify-center flex-col">
         <div className="mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold text-darkBlue">450</h1>
-          <h1 className="text-5xl md:text-7xl font-bold text-slate-700">
-            DSA TRACKER
+          <h1 className="text-5xl md:text-7xl font-bold text-darkBlue">
+            {" "}
+            <span className="text-darkBlue block">450</span>
+            <span className="text-slate-700">DSA TRACKER</span>
           </h1>
+
+          {/* <h1 className="text-5xl md:text-7xl font-bold ">DSA TRACKER</h1> */}
         </div>
         <div className="text-slate-700 text-lg font-semibold md:ml-4">
           <p>
