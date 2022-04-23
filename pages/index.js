@@ -20,7 +20,7 @@ export default function Home(props) {
   return (
     <div className="bg-background h-[100%] pt-16 w-screen">
       <Head>
-        <title>450 DSA TRACKER - love babbar - 450 dsa sde sheet</title>
+        <title>450 DSA TRACKER | DSA CRACKER SHEET BY LOVE BABBAR</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
@@ -31,7 +31,7 @@ export default function Home(props) {
         />
         <meta
           name="keywords"
-          content="450 dsa tracker, sde sheet, love babbar sde sheet"
+          content="450 dsa cracker, sde sheet, love babbar sde sheet,dsa cracker by love babbar"
         />
         <meta
           name="google-site-verification"

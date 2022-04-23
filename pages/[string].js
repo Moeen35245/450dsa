@@ -1,5 +1,6 @@
 import { getSession } from "next-auth/react";
 import { SearchIcon } from "@heroicons/react/outline";
+import { topics } from "../lib/helper";
 import { connectToDatabase } from "../lib/db";
 import Table from "../components/table/Table";
 import { useContext } from "react";
@@ -41,6 +42,14 @@ export async function getServerSideProps(context) {
     };
   }
   let currTopic = context.params.string;
+  if (!topics.includes(currTopic)) {
+    return {
+      redirect: {
+        destination: "/404",
+        permanent: false,
+      },
+    };
+  }
   const client = await connectToDatabase();
   const db = client.db();
   const questionCollection = db.collection("questionList");

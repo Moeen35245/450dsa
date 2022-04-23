@@ -6,8 +6,7 @@ function Header() {
       <div className="md:pt-0 pt-20 right-half flex justify-center flex-col">
         <div className="mx-auto">
           <h1 className="text-5xl md:text-7xl font-bold text-darkBlue">
-            {" "}
-            <span className="text-darkBlue block">450</span>
+            <span className="text-darkBlue block">450</span>{" "}
             <span className="text-slate-700">DSA TRACKER</span>
           </h1>
 
