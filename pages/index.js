@@ -20,19 +20,22 @@ export default function Home(props) {
   return (
     <div className="bg-background h-[100%] pt-16 w-screen">
       <Head>
-        <title>450 DSA TRACKER | DSA CRACKER SHEET BY LOVE BABBAR</title>
+        <title>
+          450 DSA TRACKER | LOVE BABBAR SDE SHEET | DSA PLACEMENT QUESTIONS
+        </title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1"
         ></meta>
         <meta
           name="description"
-          content="450 dsa tracker will enhance your data structures and algorithems skill and it will drive away your fear. Dsa 450 is a collection of 400+ most asked dsa questions"
+          content="450 dsa tracker is a web app based on love babbar sde sheet will enhance your data structures and algorithms skill and it will drive away your fear. Dsa 450 is a collection of 400+ most asked dsa placement questions"
         />
         <meta
           name="keywords"
-          content="450 dsa cracker, sde sheet, love babbar sde sheet,dsa cracker by love babbar"
+          content="450 dsa cracker, love babbar sde sheet,dsa placement questions"
         />
+        <meta name="robots" content="index, follow" />
         <meta
           name="google-site-verification"
           content="jHIa92FrxJtH7lhBfhYIzQcCV1b-JF3XVNrE7JJJYTg"
@@ -51,21 +54,23 @@ export default function Home(props) {
         <meta charSet="utf-8"></meta>
         <link rel="icon" href="/logo.svg" />
       </Head>
-      <Header />
-      <div className="flex">
-        <div className="grid grid-cols-1 new md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1160px] mx-auto">
-          {unique.map((item, i) => {
-            return (
-              <Card
-                id={item.id}
-                key={item.id}
-                name={item.topic}
-                number={result[i][1]}
-              />
-            );
-          })}
-        </div>
-      </div>
+      <main>
+        <Header />
+        <article className="flex">
+          <div className="grid grid-cols-1 new md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1160px] mx-auto">
+            {unique.map((item, i) => {
+              return (
+                <Card
+                  id={item.id}
+                  key={item.id}
+                  name={item.topic}
+                  number={result[i][1]}
+                />
+              );
+            })}
+          </div>
+        </article>
+      </main>
     </div>
   );
 }

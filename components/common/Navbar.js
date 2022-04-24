@@ -35,7 +35,7 @@ function Navbar() {
   };
 
   return (
-    <div className="bg-background pt-6">
+    <header className="bg-background pt-6">
       <div
         onClick={navbarHandler}
         className="shadow-xl shadow-red-100  z-[100] bg-red-100 rounded-full p-2 fixed top-4 left-6 cursor-pointer md:hidden"
@@ -108,7 +108,7 @@ function Navbar() {
           )}
         </div>
       </div>
-    </div>
+    </header>
   );
 }
 

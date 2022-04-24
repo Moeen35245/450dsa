@@ -117,7 +117,11 @@ function Form() {
       </div>
       <div className="hidden grow w-1/2 bg-darkBlue rounded-tl-3xl rounded-bl-3xl md:flex justify-center items-center">
         <div className="relative h-[380px] w-[380px]">
-          <Image src={laptop} objectFit="contain" />
+          <Image
+            alt="dsa placement questions"
+            src={laptop}
+            objectFit="contain"
+          />
         </div>
       </div>
     </div>
