@@ -6,8 +6,7 @@ function MessageBox() {
   return (
     <div
       className={
-        ((ctx.res.error === false ||
-          ctx.res.url === "https://450dsa.vercel.app") &&
+        ((ctx.res.error === false || ctx.res.url != null) &&
           `border-green-500 text-green-500 bg-green-200 rounded mb-4 w-full py-2 px-3 border  flex justify-between`) ||
         `border-red-500 text-red-500 bg-red-200 rounded mb-4 w-full py-2 px-3 border  flex justify-between`
       }

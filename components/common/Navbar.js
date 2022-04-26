@@ -61,6 +61,7 @@ function Navbar() {
         >
           <div className="hidden md:block relative h-8 w-40 mx-auto md:mx-0">
             <Image
+              alt="love babbar sde sheet"
               src={pic}
               objectFit="contain"
               className=" h-full object-contain"
@@ -86,7 +87,6 @@ function Navbar() {
             >
               <Link href="/">Contact</Link>
             </li>
-            {status == "loading" && <p className="text-lg animate-ping">...</p>}
           </ul>
           {!session && (
             <Link href="/auth">

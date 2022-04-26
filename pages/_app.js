@@ -5,6 +5,7 @@ import Router from "next/router";
 import Navbar from "../components/common/Navbar";
 import { SessionProvider } from "next-auth/react";
 import UserState from "../context/userState";
+import Script from "next/script";
 const progress = new ProgressBar({
   size: 4,
   color: "#6D4AB5",
@@ -21,6 +22,16 @@ function MyApp({ Component, pageProps }) {
     <SessionProvider session={pageProps.session}>
       <UserState>
         <Navbar />
+        <Script
+          strategy="lazyOnload"
+          src="https://www.googletagmanager.com/gtag/js?id=G-GDRNR8KMR6"
+        />
+        <Script strategy="lazyOnload">
+          {`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-GDRNR8KMR6');`}
+        </Script>
         <Component {...pageProps} />
       </UserState>
     </SessionProvider>
@@ -28,3 +39,14 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+
+// <script async src="https://www.googletagmanager.com/gtag/js?id=G-GDRNR8KMR6"></script>
+{
+  /* <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-GDRNR8KMR6');
+</script> */
+}

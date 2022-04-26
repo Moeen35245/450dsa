@@ -9,8 +9,6 @@ function Header() {
             <span className="text-darkBlue block">450</span>{" "}
             <span className="text-slate-700">DSA TRACKER</span>
           </h1>
-
-          {/* <h1 className="text-5xl md:text-7xl font-bold ">DSA TRACKER</h1> */}
         </div>
         <div className="text-slate-700 text-lg font-semibold md:ml-4">
           <p>
@@ -31,7 +29,11 @@ function Header() {
       </div>
       <div className="p-4 left-half pb-20 md:pb-0 flex justify-center flex-grow">
         <div className="mt-auto relative h-[320px] w-[320px] md:h-[380px] md:w-[380px]">
-          <Image src={headerpic} objectFit="contain" />
+          <Image
+            alt="love babbar sde sheet"
+            src={headerpic}
+            objectFit="contain"
+          />
         </div>
       </div>
     </article>
