@@ -23,10 +23,11 @@ function MyApp({ Component, pageProps }) {
       <UserState>
         <Navbar />
         <Script
+          id="myScript1"
           strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-GDRNR8KMR6"
         />
-        <Script strategy="lazyOnload">
+        <Script id="myScript2" strategy="lazyOnload">
           {`window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
