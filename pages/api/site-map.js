@@ -5,7 +5,7 @@ export default async (req, res) => {
   // An array with your pages.
   const links = [
     { url: "/", changefreq: "weekly", priority: 1 },
-    { url: "/404", changefreq: "never", priority: 2 },
+    { url: "/about", changefreq: "never", priority: 2 },
   ];
 
   // Create a stream to write to

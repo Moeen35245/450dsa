@@ -18,7 +18,7 @@ export default function Home(props) {
     ctx.setUserData(props.queData.queList);
   }
   return (
-    <div className="bg-background h-[100%] pt-16 w-screen">
+    <div className="bg-background h-[100%] sm:pt-16  w-screen">
       <Head>
         <title>
           450 DSA TRACKER | LOVE BABBAR SDE SHEET | DSA PLACEMENT QUESTIONS
