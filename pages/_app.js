@@ -22,7 +22,8 @@ function MyApp({ Component, pageProps }) {
     <SessionProvider session={pageProps.session}>
       <UserState>
         <Navbar />
-        <Script
+        {/* changes are here */}
+        {/* <Script
           id="myScript1"
           strategy="lazyOnload"
           src="https://www.googletagmanager.com/gtag/js?id=G-GDRNR8KMR6"
@@ -32,7 +33,7 @@ function MyApp({ Component, pageProps }) {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-GDRNR8KMR6');`}
-        </Script>
+        </Script> */}
         <Component {...pageProps} />
       </UserState>
     </SessionProvider>
