@@ -29,7 +29,7 @@ function Form() {
   };
 
   return (
-    <div className="mt-28 bg-white w-full h-full rounded flex">
+    <div className="mt-5 bg-white w-full h-full rounded flex">
       <div className="grow w-1/2 form-container flex justify-center items-center">
         <form
           onSubmit={submitHandler}

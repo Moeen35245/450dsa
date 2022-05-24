@@ -9,14 +9,17 @@ const handler = async (req, res) => {
     const hashedPassword = await hashPassword(password);
     const client = await connectToDatabase();
     const db = client.db();
-    if (
-      !email ||
-      !password ||
-      !email.includes("@") ||
-      password.trim().length < 7
-    ) {
-      // throw new Error("Email or Password look strange");
-      res.status(422).json({ message: "Email or Password Looks bad" });
+
+    if (!email || !email.includes("@") || !email.includes(".com")) {
+      // throw new Error
+      res.status(422).json({ message: "Enter a valid Email" });
+      client.close();
+    }
+
+    if (!password || password.trim().length < 7) {
+      res
+        .status(422)
+        .json({ message: "Password cannot be less than 7 Characters" });
       client.close();
     }
     const existingUser = await db.collection("users").findOne({ email: email });
