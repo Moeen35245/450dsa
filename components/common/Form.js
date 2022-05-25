@@ -38,7 +38,7 @@ function Form() {
           {ctx.res.ok && <MessageBox />}
           <div className="p-3 rounded-sm flex justify-center items-center text-xs font-medium messageBox text-orange-600 bg-orange-100 mb-4">
             <ul className="list-disc">
-              <li>Email must contain '@' and '.com'</li>
+              <li>Email must contain &apos;@&apos; and &apos;com&apos;</li>
               <li>password must be atleast 7 characters</li>
             </ul>
           </div>
