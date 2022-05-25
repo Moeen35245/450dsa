@@ -13,7 +13,7 @@ export default function Home(props) {
   const unique = removeDuplicates(arrayData);
   const counts = calcCounts(arrayData);
   const result = convertObjToArray(counts);
-
+  console.log(props.queData);
   if (props.queData) {
     ctx.setUserData(props.queData.queList);
   }

@@ -36,6 +36,12 @@ function Form() {
           className="max-w-sm bg-white rounded px-8 pt-6 pb-8 mb-4"
         >
           {ctx.res.ok && <MessageBox />}
+          <div className="p-3 rounded-sm flex justify-center items-center text-xs font-medium messageBox text-orange-600 bg-orange-100 mb-4">
+            <ul className="list-disc">
+              <li>Email must contain '@' and '.com'</li>
+              <li>password must be atleast 7 characters</li>
+            </ul>
+          </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"

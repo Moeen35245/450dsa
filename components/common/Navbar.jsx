@@ -81,8 +81,8 @@ function Navbar() {
             className="px-4 py-1 transition-all hover:text-white rounded-md hover:bg-[rgba(109,74,181,0.7)]"
             onClick={navbarHandler}
           >
-            <Link href="" target="_blank">
-              Contact
+            <Link href="/profile" target="_blank">
+              Profile
             </Link>
           </li>
 

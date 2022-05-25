@@ -17,7 +17,7 @@ function MessageBox() {
       <XIcon
         onClick={ctx.crossHandler}
         className={
-          ((ctx.res.error === false || ctx.res.url != "") &&
+          ((ctx.res.error === false || ctx.res.url != null) &&
             `text-green-500 h-5 w-5 cursor-pointer `) ||
           `text-red-500 h-5 w-5 cursor-pointer`
         }

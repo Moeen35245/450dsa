@@ -8,3 +8,8 @@ function AboutInfo() {
 }
 
 export default AboutInfo;
+export async function getStaticProps(context) {
+  return {
+    props: {},
+  };
+}
