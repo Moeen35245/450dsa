@@ -4,6 +4,10 @@ html {
   font-family: "poppins", sans-serif;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .shadow-clay {
   box-shadow: 0px 25px 20px rgba(209, 227, 243, 0.25);
 }

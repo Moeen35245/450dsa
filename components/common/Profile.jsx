@@ -2,33 +2,43 @@ import { useState, useEffect } from "react";
 
 function Profile() {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [solvedQuestions,setSolvedQuestions]=useState(0);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+
+  // useEffect(() => {
+  //   fetch(`/api/getUserData`)
+  //     .then((response) => response.json())
+  //     .then((actualData) => {
+  //       setData(actualData);
+  //       setError(null);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //       setError(err.message);
+  //       setData(null);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch(`/api/getUserData`)
-      .then((response) => response.json())
-      .then((actualData) => {
-        setData(actualData);
-        setError(null);
-      })
-      .catch((err) => {
-        console.log(err.message);
-        setError(err.message);
-        setData(null);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    if (localStorage.getItem("questionData")) {
+     let solvedQuestions=JSON.parse(localStorage.getItem("questionData"));
+      setData(solvedQuestions);
+      setSolvedQuestions(solvedQuestions.length);
+    }
   }, []);
-  let solvedQuestions = 0;
-  if (data) {
-    // console.log(data.queList);
-    let { queList } = data;
-    Object.values(queList).forEach((key) => {
-      solvedQuestions += key.length;
-    });
-  }
+
+  // if (data) {
+  //   // console.log(data.queList);
+  //   let { queList } = data;
+  //   Object.values(queList).forEach((key) => {
+  //     solvedQuestions += key.length;
+  //   });
+  // }
 
   if (loading)
     return (

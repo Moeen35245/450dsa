@@ -5,7 +5,7 @@ function Tablehead() {
       <th className="center-col">Que. No.</th>
       <th className="center-col">Name</th>
       <th className="center-col">Status</th>
-      <th className="center-col hidden">Code</th>
+      {/* <th className="center-col hidden">Code</th> */}
     </thead>
   );
 }

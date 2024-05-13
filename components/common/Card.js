@@ -1,28 +1,46 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import { UsersIcon } from "@heroicons/react/solid";
 import "../../styles/Home.module.css";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import Status from "./Status";
 import { UserContext } from "../../context/mainContext";
 import { ClosedIcon, OpenIocn } from "../card/Icons";
 import { removeSpaces } from "../../lib/removespace";
 import StatusHome from "./StatusHome";
-function Card({ name, id, number }) {
-  const { data: session, status } = useSession();
+import { questionsList } from "../../questions/lovebabbar";
+function Card({ name, id }) {
+  // const { data: session, status } = useSession();
   const ctx = useContext(UserContext);
   const topic = removeSpaces(name);
-  let length = 0;
-  if (session) {
-    if (ctx.userData)
-      if (ctx.userData[topic]) length = ctx.userData[topic].length;
-  } else {
-    // console.log("session is not defined yet");
-  }
+  let topicQuestions = questionsList.filter(
+    (item) => removeSpaces(item.TOPICS) === topic
+  );
+
+  let length = topicQuestions.length;
+
+  // let length = 0;
+  // if (session) {
+  //   if (ctx.userData)
+  //     if (ctx.userData[topic]) length = ctx.userData[topic].length;
+  // } else {
+  //   // console.log("session is not defined yet");
+  // }
+
+  const [number, setNumber] = useState(0);
+
+  useEffect(() => {
+    let allQuestions = JSON.parse(localStorage.getItem("questionData"));
+    if (allQuestions) {
+      setNumber(
+        topicQuestions.filter((que) => allQuestions.includes(que._id)).length
+      );
+    }
+  }, []);
 
   const Childdiv = {
     height: "100%",
-    width: `${(length / number) * 100}%`,
+    width: `${(number / length) * 100}%`,
     backgroundColor: "#06D6A0",
     borderRadius: "9999px",
   };
@@ -36,26 +54,27 @@ function Card({ name, id, number }) {
           <h2 className="text-center mt-2 text-3xl font-semibold text-darkBlue">
             {name}
           </h2>
-          <p className="font-medium text-sm">{number} Questions</p>
+          <p className="font-medium text-sm">{length} Questions</p>
           <div className="mt-auto flex justify-between w-[94%] mb-1 font-medium text-sm">
             <p>Progress</p>
-            <p>{((length / number) * 100).toFixed()}%</p>
+            <p>{((number / length) * 100).toFixed()}%</p>
           </div>
           <div
             className={
               "progress-outer rounded-full h-2 w-full bg-[#FFCCD5] " +
-              (length > 0 && " bg-[#D8F3DC]")
+              (number > 0 && " bg-[#D8F3DC]")
             }
           >
             <div style={Childdiv}></div>
           </div>
           <div className="flex justify-between items-center w-[94%] mt-4">
             <p className="font-medium text-sm">
-              {length}/{number}
+              {number}/{length}
             </p>
-            {(!session && <ClosedIcon />) || (session && <OpenIocn />)}
+            {/* {(!session && <ClosedIcon />) || (session && <OpenIocn />)} */}
+            <OpenIocn />
             <div className="ml-auto"></div>
-            {length > 0 ? <StatusHome /> : <Status />}
+            {number > 0 ? <StatusHome /> : <Status />}
           </div>
         </div>
       </Link>

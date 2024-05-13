@@ -1,10 +1,7 @@
-import { getSession } from "next-auth/react";
 import { SearchIcon } from "@heroicons/react/outline";
 import { topics } from "../lib/helper";
-import { connectToDatabase } from "../lib/db";
 import Table from "../components/table/Table";
-import { useContext } from "react";
-import { UserContext } from "../context/mainContext";
+import { questionsList } from "../questions/lovebabbar";
 
 const String = ({ data, queData }) => {
   return (
@@ -29,18 +26,12 @@ const String = ({ data, queData }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export async function getStaticPaths() {
+  const paths = topics.map((item) => ({ params: { string: item } }));
+  return { paths, fallback: false };
+}
 
-  console.log(session);
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-        permanent: false,
-      },
-    };
-  }
+export async function getStaticProps(context) {
   let currTopic = context.params.string;
   if (!topics.includes(currTopic)) {
     return {
@@ -50,22 +41,10 @@ export async function getServerSideProps(context) {
       },
     };
   }
-  const client = await connectToDatabase();
-  const db = client.db();
-  const questionCollection = db.collection("questionList");
-  const userCollection = db.collection("users");
-  const data = await questionCollection.find({ TOPICS: currTopic }).toArray();
-  let questionData = {};
 
-  if (session) {
-    let res = await userCollection.findOne({ email: session.user.email });
-    res = {
-      id: res._id.toString(),
-      queList: res.questionList,
-    };
-    questionData = res;
-  }
-  client.close();
+  const data = questionsList.filter((item) => item.TOPICS === currTopic);
+
+  let questionData = {};
 
   return {
     props: {

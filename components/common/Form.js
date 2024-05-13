@@ -33,25 +33,25 @@ function Form() {
       <div className="grow w-1/2 form-container flex justify-center items-center">
         <form
           onSubmit={submitHandler}
-          className="max-w-sm bg-white rounded px-8 pt-6 pb-8 mb-4"
+          className="max-w-sm bg-white rounded px-8 w-full pt-6 pb-8 mb-4"
         >
-          {ctx.res.ok && <MessageBox />}
+          {/* {ctx.res.ok && <MessageBox />}
           <div className="p-3 rounded-sm flex justify-center items-center text-xs font-medium messageBox text-orange-600 bg-orange-100 mb-4">
             <ul className="list-disc">
               <li>Email must contain &apos;@&apos; and &apos;com&apos;</li>
               <li>password must be atleast 7 characters</li>
             </ul>
-          </div>
-          <div className="mb-4">
+          </div> */}
+          <div className="mb-4 ">
             <label
               className="block text-gray-700 text-sm font-medium mb-2"
               htmlFor="Email"
             >
               Email*
             </label>
-            <div className="border w-full flex shadow focus:shadow-outline jsutify-between items-center">
+            <div className="border rounded-md w-full flex  jsutify-between items-center overflow-hidden">
               <input
-                className="rounded grow w-[90%] py-2 px-3 text-slate-600  focus:outline-none "
+                className=" grow w-[90%] py-3 px-6 text-slate-600  focus:outline-none "
                 id="Email"
                 type="text"
                 placeholder="Enter Email"
@@ -67,9 +67,9 @@ function Form() {
             >
               Password*
             </label>
-            <div className="border w-full flex justify-around items-center shadow focus:shadow-outline">
+            <div className="border rounded-md w-full flex justify-around items-center overflow-hidden">
               <input
-                className="rounded grow py-2 px-3 text-slate-600 w-[90%] focus:outline-none"
+                className=" grow py-3 px-6 text-slate-600 w-[90%] focus:outline-none"
                 id="password"
                 type={(ctx.isHide && "password") || (!ctx.isHide && "text")}
                 placeholder="Type your secret"

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UploadIcon } from "@heroicons/react/outline";
 import { useSession } from "next-auth/react";
 import Status from "../common/Status";
@@ -32,29 +32,47 @@ const deleteHandler = async (id, email, topic) => {
 };
 
 function Tablebody({ item, count, queList }) {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
   const [isLoading, setLoading] = useState(false);
-  const [userData, setUserData] = useState(queList);
+  // const [userData, setUserData] = useState(queList);
 
-  if (!userData) {
-    setUserData(queList);
-  }
+  // if (!userData) {
+  //   setUserData(queList);
+  // }
+
   const topic = removeSpaces(item.topic);
 
-  const [isQueDone, setIsQueDone] = useState(userData[topic].includes(item.id));
+  const [isQueDone, setIsQueDone] = useState(false);
+
+  useEffect(() => {
+    let allQuestions = JSON.parse(localStorage.getItem("questionData"));
+    if (allQuestions) setIsQueDone(allQuestions.indexOf(item.id) !== -1);
+  }, []);
 
   const checkHandler = async (e) => {
-    setLoading(true);
+    // setLoading(true);
     if (!isQueDone) {
-      insertHandler(item.id, session.user.email, topic)
-        .then((res) => setUserData(res.questionList))
-        .then((res) => setLoading(false));
+      // insertHandler(item.id, session.user.email, topic)
+      //   .then((res) => setUserData(res.questionList))
+      //   .then((res) => setLoading(false));
+
+      if (!localStorage.getItem("questionData")) {
+        let questionArray = [item.id];
+        localStorage.setItem("questionData", JSON.stringify(questionArray));
+      } else {
+        let questionArray = JSON.parse(localStorage.getItem("questionData"));
+        questionArray.push(item.id);
+        localStorage.setItem("questionData", JSON.stringify(questionArray));
+      }
       setIsQueDone(true);
+      // localStorage.setItem('questionData',)
     } else {
-      deleteHandler(item.id, session.user.email, topic)
-        .then((res) => setUserData(res.questionList))
-        .then((res) => setLoading(false));
+      if (localStorage.getItem("questionData")) {
+        let questionArray = JSON.parse(localStorage.getItem("questionData"));
+        questionArray = questionArray.filter((que) => que !== item.id);
+        localStorage.setItem("questionData", JSON.stringify(questionArray));
+      }
 
       setIsQueDone(false);
     }
@@ -69,7 +87,7 @@ function Tablebody({ item, count, queList }) {
           ) : (
             <input
               type="checkbox"
-              className="cursor-pointer"
+              className="h-5 w-5 cursor-pointer"
               checked={isQueDone && "checked"}
               onChange={checkHandler}
             />
@@ -86,9 +104,9 @@ function Tablebody({ item, count, queList }) {
           </Link>
         </td>
         <td className="md:p-5">{isQueDone ? <StatusGreen /> : <Status />}</td>
-        <td className="md:p-5 hidden">
+        {/* <td className="md:p-5 hidden">
           <UploadIcon className="h-5 w-5 ml-auto mr-auto" />
-        </td>
+        </td> */}
       </tr>
     </tbody>
   );

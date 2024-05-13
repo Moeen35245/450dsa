@@ -1,22 +1,24 @@
 import Head from "next/head";
 import Card from "../components/common/Card";
-import { connectToDatabase } from "../lib/db";
+// import { connectToDatabase } from "../lib/db";
 import { calcCounts, convertObjToArray, removeDuplicates } from "../lib/helper";
-import { useContext } from "react";
-import { UserContext } from "../context/mainContext";
-import { getSession } from "next-auth/react";
+// import { useContext } from "react";
+// import { UserContext } from "../context/mainContext";
+// import { getSession } from "next-auth/react";
 import Header from "../components/common/Header";
+import { questionsList } from "../questions/lovebabbar";
+import { topics } from "../lib/helper";
 
 export default function Home(props) {
-  const ctx = useContext(UserContext);
+  // const ctx = useContext(UserContext);
   const arrayData = props.data;
   const unique = removeDuplicates(arrayData);
   const counts = calcCounts(arrayData);
   const result = convertObjToArray(counts);
-  console.log(props.queData);
-  if (props.queData) {
-    ctx.setUserData(props.queData.queList);
-  }
+  // console.log(props.queData);
+  // if (props.queData) {
+  //   ctx.setUserData(props.queData.queList);
+  // }
   return (
     <div className="bg-background h-[100%] sm:pt-16  w-screen">
       <Head>
@@ -56,17 +58,10 @@ export default function Home(props) {
       </Head>
       <main>
         <Header />
-        <article className="flex">
+        <article className="flex pb-5">
           <div className="grid grid-cols-1 new md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1160px] mx-auto">
             {unique.map((item, i) => {
-              return (
-                <Card
-                  id={item.id}
-                  key={item.id}
-                  name={item.topic}
-                  number={result[i][1]}
-                />
-              );
+              return <Card id={item.id} key={item.id} name={item.topic} />;
             })}
           </div>
         </article>
@@ -75,25 +70,27 @@ export default function Home(props) {
   );
 }
 
-export async function getServerSideProps(context) {
-  const session = await getSession(context);
+export async function getStaticProps() {
+  // const session = await getSession(context);
 
-  const client = await connectToDatabase();
-  const db = client.db();
-  const questionCollection = db.collection("questionList");
-  const userCollection = db.collection("users");
+  // const client = await connectToDatabase();
+  // const db = client.db();
+  // const questionCollection = db.collection("questionList");
+  // const userCollection = db.collection("users");
 
-  const data = await questionCollection.find({}).toArray();
-  let questionData = {};
+  // const data = await questionCollection.find({}).toArray();
+  const data = questionsList;
 
-  if (session) {
-    let res = await userCollection.findOne({ email: session.user.email });
-    res = {
-      queList: res.questionList,
-    };
-    questionData = res;
-  }
-  client.close();
+  // let questionData = {};
+
+  // if (session) {
+  //   let res = await userCollection.findOne({ email: session.user.email });
+  //   res = {
+  //     queList: res.questionList,
+  //   };
+  //   questionData = res;
+  // }
+  // client.close();
 
   return {
     props: {
@@ -104,7 +101,7 @@ export async function getServerSideProps(context) {
         isDone: obj.DONE,
         link: obj.LINK,
       })),
-      queData: questionData,
+      // queData: questionData,
     },
   };
 }

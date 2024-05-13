@@ -27,12 +27,12 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  const logoutHandler = () => {
-    ctx.setUserId("404");
-    ctx.setSession({});
-    navbarHandler();
-    signOut();
-  };
+  // const logoutHandler = () => {
+  //   ctx.setUserId("404");
+  //   ctx.setSession({});
+  //   navbarHandler();
+  //   signOut();
+  // };
 
   return (
     <nav className="relative px-5 py-3 flex dark:text-white bg-icream dark:bg-idark ">
@@ -52,7 +52,7 @@ function Navbar() {
         <Link href="/">
           <div className="relative w-44">
             <Image
-              alt="This basni solar logo"
+              alt="Dsa Tracker"
               src={pic}
               objectFit="contain"
               className="h-full object-contain"
@@ -86,7 +86,7 @@ function Navbar() {
             </Link>
           </li>
 
-          {!session && (
+          {/* {!session && (
             <Link href="/auth">
               <li
                 onClick={navbarHandler}
@@ -103,7 +103,7 @@ function Navbar() {
             >
               Singn Out
             </li>
-          )}
+          )} */}
         </ul>
       </div>
     </nav>

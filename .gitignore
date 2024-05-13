@@ -31,6 +31,7 @@ secure.js
 .env.test.local
 .env.production.local
 next.config.js
+.env
 
 # vercel
 .vercel
