@@ -7,6 +7,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines":{
+    "node":"18.x"
+  },
   "dependencies": {
     "@badrap/bar-of-progress": "^0.1.2",
     "@heroicons/react": "^1.0.5",
