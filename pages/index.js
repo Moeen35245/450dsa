@@ -35,7 +35,7 @@ export default function Home(props) {
         />
         <meta
           name="keywords"
-          content="450 dsa cracker, love babbar sde sheet,dsa placement questions"
+          content="dsa love babbar, 450 dsa tracker, love babbar dsa sheet, dsa sheet by love babbar, 450ds, love babbar, dsa questions, strivers dsa, apna college dsa sheet, dsa project tracking"
         />
         <meta name="robots" content="index, follow" />
         <meta
