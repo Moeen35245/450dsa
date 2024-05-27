@@ -55,6 +55,8 @@ export default function Home(props) {
         />
         <meta charSet="utf-8"></meta>
         <link rel="icon" href="/logo.svg" />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5922117082692857"
+     crossorigin="anonymous"></script>
       </Head>
       <main>
         <Header />
