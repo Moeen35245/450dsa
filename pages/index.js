@@ -42,7 +42,7 @@ export default function Home(props) {
           name="google-site-verification"
           content="jHIa92FrxJtH7lhBfhYIzQcCV1b-JF3XVNrE7JJJYTg"
         />
-        <meta name="google-adsense-account" content="ca-pub-5922117082692857">
+        <meta name="google-adsense-account" content="ca-pub-5922117082692857"/>
         <meta property="og:title" content="450 DSA TRACKER" />
         <meta
           property="og:description"
