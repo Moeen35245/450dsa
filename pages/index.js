@@ -52,8 +52,10 @@ export default function Home(props) {
         <meta property="og:url" content="https://www.450dsa.vercel.app" />
         <meta
           property="og:image"
-          content="https://drive.google.com/file/d/1OuJWyb47Gby7x8L8Cv15vOuVWPgqhwqN/view?usp=sharing"
-        />
+          content="https://drive.usercontent.google.com/download?id=1OuJWyb47Gby7x8L8Cv15vOuVWPgqhwqN&export=view&authuser=0"
+        />   
+        <meta property="og:image:width" content="1920"/>
+        <meta property="og:image:height" content="1080"/>
         <meta charSet="utf-8"></meta>
         <link rel="icon" href="/logo.svg" />
       </Head>
