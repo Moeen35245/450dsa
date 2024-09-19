@@ -8,6 +8,7 @@ import { calcCounts, convertObjToArray, removeDuplicates } from "../lib/helper";
 import Header from "../components/common/Header";
 import { questionsList } from "../questions/lovebabbar";
 import { topics } from "../lib/helper";
+import { useEffect } from "react";
 
 export default function Home(props) {
   // const ctx = useContext(UserContext);
@@ -15,6 +16,18 @@ export default function Home(props) {
   const unique = removeDuplicates(arrayData);
   const counts = calcCounts(arrayData);
   const result = convertObjToArray(counts);
+
+   useEffect(() => {
+    const script = document.createElement("script");
+    script.src =
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5922117082692857";
+    script.async = true;
+    script.setAttribute("crossorigin", "anonymous");
+    document.head.appendChild(script);
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, []);
   // console.log(props.queData);
   // if (props.queData) {
   //   ctx.setUserData(props.queData.queList);
@@ -58,7 +71,6 @@ export default function Home(props) {
         <meta property="og:image:height" content="1080"/>
         <meta charSet="utf-8"></meta>
         <link rel="icon" href="/logo.svg" />
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5922117082692857" crossorigin="anonymous"></script>
       </Head>
       <main>
         <Header />
